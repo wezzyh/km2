@@ -1,0 +1,234 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --fundo: #ffe6f0;
+  --cartao: #ffffff;
+  --texto: #111111;
+  --texto-suave: #444444;
+  --rosa: #e86a9f;
+  --rosa-escuro: #d14d86;
+  --rosa-claro: #ffd6e6;
+  --verde: #3ccf8e;
+}
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background: var(--fundo);
+  background-image:
+    radial-gradient(circle at 10% 0%, #ffd4e5 0%, transparent 40%),
+    radial-gradient(circle at 90% 100%, #ffd4e5 0%, transparent 40%);
+  color: var(--texto);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 32px 16px 48px;
+}
+
+/* Topo */
+.topo {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.selo {
+  display: inline-block;
+  background: var(--rosa-claro);
+  color: var(--rosa-escuro);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.topo h1 {
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+/* Passos */
+.passo {
+  background: var(--cartao);
+  border-radius: 20px;
+  padding: 24px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 24px rgba(232, 106, 159, 0.12);
+  border: 1px solid #ffe3ee;
+}
+
+.passo-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.numero {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--rosa);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.2rem;
+  display: grid;
+  place-items: center;
+}
+
+.passo h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.passo p {
+  font-size: 1.1rem;
+  color: var(--texto-suave);
+}
+
+.passo p strong {
+  color: var(--texto);
+}
+
+/* Aviso do topo */
+.aviso {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-top: 14px;
+}
+
+.atencao {
+  color: #e00000;
+  font-weight: 750;
+  text-transform: uppercase;
+  display: inline-block;
+  animation:
+    chacoalhar 3s ease-in-out infinite,
+    brilhar 1.5s ease-in-out infinite;
+}
+
+/* Prints */
+.print {
+  margin-top: 16px;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 3px solid var(--rosa-claro);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  background: #000;
+}
+
+.print-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  filter: contrast(1.08) saturate(1.1);
+  transform: translateZ(0);
+}
+
+.print:has(.print-vazio[style*="block"]) {
+  border: none;
+  box-shadow: none;
+  background: none;
+}
+
+.print-vazio {
+  display: block;
+  text-align: center;
+  padding: 28px 12px;
+  border: 2px dashed #f0b8cf;
+  border-radius: 14px;
+  color: #b06a8a;
+  font-size: 0.95rem;
+}
+
+/* Passo 3 */
+.dedo {
+  font-size: 2.4rem;
+  text-align: center;
+  margin: 8px 0;
+  animation: quicar 1s ease-in-out infinite;
+}
+
+.botao {
+  display: block;
+  text-align: center;
+  background: linear-gradient(135deg, var(--rosa), var(--rosa-escuro));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(209, 77, 134, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  animation: pulsar 2s ease-in-out infinite;
+}
+
+.botao:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(209, 77, 134, 0.45);
+}
+
+.botao:active {
+  transform: scale(0.97);
+}
+
+.rodape {
+  text-align: center;
+  color: #b06a8a;
+  font-size: 0.9rem;
+  margin-top: 12px;
+}
+
+/* Animação de entrada */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes quicar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+@keyframes pulsar {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* Fica parado e de tempos em tempos dá uma chacoalhada */
+@keyframes chacoalhar {
+  0%, 70%, 100% { transform: rotate(0) scale(1); }
+  74% { transform: rotate(-3deg) scale(1.05); }
+  78% { transform: rotate(3deg) scale(1.05); }
+  82% { transform: rotate(-2deg) scale(1.05); }
+  86% { transform: rotate(0) scale(1); }
+}
+
+/* Brilho vermelho pulsando em volta da palavra */
+@keyframes brilhar {
+  0%, 100% { text-shadow: 0 0 0 rgba(255, 0, 0, 0); }
+  50% { text-shadow: 0 0 8px rgba(255, 0, 0, 0.7), 0 0 16px rgba(255, 0, 0, 0.35); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
